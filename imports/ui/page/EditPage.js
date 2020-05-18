@@ -273,7 +273,7 @@ class EditPage extends React.Component {
                             name="selectedCategories"
                             placeholder="Please select"
                             style={{width: '100%'}}
-
+                            value={this.state.selectedCategories}
                             onChange={(value) => this.handleSelectChange('selectedCategories', value)}
 
                         >
