@@ -155,6 +155,10 @@ class EditPage extends React.Component {
         })
     };
     onSave = (e) => {
+        console.log("LENGTH CATEGORES", this.state.selectedCategories.length);
+        if (this.state.selectedCategories == 0) {
+            return;
+        }
         if (this.state.isEdit)
             this.editPage(e);
         else
@@ -232,13 +236,7 @@ class EditPage extends React.Component {
                         if (!changedField)
                             return;
 
-                        if (changedField.name[0] === "selectedCategories") {
-                            console.log("QAEEQREWR")
 
-                            this.handleSelectChange('selectedCategories', changedField.value);
-
-                            return
-                        }
                         if (changedField) {
                             this.setState({
                                 [changedField.name[0]]: changedField.value
@@ -267,7 +265,7 @@ class EditPage extends React.Component {
                     </Form.Item>
                     <Form.Item
                         label="category"
-                        rules={[{required: true, message: 'categories should not be empty'}]}
+                        rules={[{required: true, message: 'Categories should not be empty'}]}
                     >
 
                         <Select
@@ -275,13 +273,17 @@ class EditPage extends React.Component {
                             name="selectedCategories"
                             placeholder="Please select"
                             style={{width: '100%'}}
-                            value={this.state.selectedCategories}
+
                             onChange={(value) => this.handleSelectChange('selectedCategories', value)}
+
                         >
                             {this.state.categories.map(item => {
                                 return <Option key={item._id}>{item.title}</Option>
                             })}
                         </Select>
+                        {this.state.selectedCategories.length === 0 &&
+                        <p style={{color: 'red'}}>categories should not be empty</p>
+                        }
                     </Form.Item>
 
 
@@ -299,13 +301,14 @@ class EditPage extends React.Component {
 
                         </Select>
                     </Form.Item>
+
+                    <Metadata categories={selectedCategories} metadataInputs={this.state.metadataInputs}
+                              onChange={this.onMetaDataChange}/>
                     <Form.Item {...tailLayout}>
                         <Button type="primary" htmlType="submit">
                             Submit
                         </Button>
                     </Form.Item>
-                    <Metadata categories={selectedCategories} metadataInputs={this.state.metadataInputs}
-                              onChange={this.onMetaDataChange}/>
                 </Form>
             </>
         )

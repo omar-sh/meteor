@@ -26,7 +26,8 @@ const notify = (message, description) => {
         description,
     };
     notification['success'](args);
-}
+};
+
 
 
 export {

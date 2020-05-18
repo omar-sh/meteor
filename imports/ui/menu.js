@@ -74,8 +74,8 @@ class MenuComp extends React.Component {
                         </Menu.Item>
 
                     })}
-                    <Menu.Item key="new_page">
-                        <Button type="link" onClick={() => FlowRouter.go('/page/new')}>Create new page</Button>
+                    <Menu.Item key="new_page" onClick={() => FlowRouter.go('/page/new')}>
+                        <Button type="link" >Create new page</Button>
                     </Menu.Item>
 
 
