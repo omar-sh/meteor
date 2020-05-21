@@ -12,7 +12,13 @@ const renderCards = (categories, metadataInputs, onChange) => {
                     <Card title={item.title} bordered={false}>
                         <Space direction={'column'}>
                             {item.metadata.map(metaItem => {
-
+                                /**
+                                 *  x= { categoryId: {
+                                 *      "Tool" :"Hi"
+                                 *  }}
+                                 *
+                                 *  x[categoryId][tool]
+                                 */
                                 return <Input
                                     value={metadataInputs[item._id] ?  metadataInputs[item._id][metaItem.title]   : ''}
                                     placeholder={metaItem.title}

@@ -9,10 +9,8 @@ const Team = new SimpleSchema({
     },
     description: {
         type: String
-    },
-    team: {
-        type: String
     }
+
 });
 
 teams.attachSchema(Team);

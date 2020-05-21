@@ -89,10 +89,26 @@ if (Meteor.isServer) {
 Meteor.methods({
     'page/new': (page) => {
         console.log('ADDED', page)
+
+
+        // for (let i = 0; i < page.categories; i++) {
+        //     const category = db.categories.find({_id: page.categories[i].category});
+        //     const metadata = page.categories[i].metadataInputs;
+        //     let categoryTitles = category.metadataInputs;
+        //     categoryTitles = categoryTitles.filter(item => {
+        //         return !metadata.includes(item);
+        //     });
+        //     // ca
+        //
+        //
+        // }
+
+
         check(page, Object);
         check(page.title, String);
         check(page.content, String);
         check(page.team, String);
+
         return db.pages.insert(page);
     },
 
